@@ -42,7 +42,7 @@ sayHi();
 ```
 
 <!-- Put your image below -->
-![](../img/answer2%5C.jpeg)
+![](../img/answer2.jpeg)
 ![](./img/image-name.jpg)
 
 3.
