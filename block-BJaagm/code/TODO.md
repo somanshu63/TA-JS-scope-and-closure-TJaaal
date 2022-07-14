@@ -2,10 +2,12 @@
 //thread of execution means that the javascript engine will read and execute the code line by line
 
 2. Where the JavaScript code gets executed?
-//global execution context
+```js
+javascript engine
+```
 
 3. What does context means in Global Execution Context?
-//it is area which shows the execution of the programs
+//it is environment which shows the execution of the code
 
 4. When do you create a global execution context.
 //when there will be some lines of code then the javascript engine will create the global execution context
@@ -18,7 +20,8 @@
 //function execution context
 
 7. When global and function execution context gets created?
-//global is created only once per program while function is created for every function
+//global is created only when executing any code in start
+//function is created for every function
 
 8. Function execution gets created during function execution or while declaring a function.
 //function execution
