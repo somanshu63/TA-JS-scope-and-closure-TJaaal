@@ -12,13 +12,13 @@ function change() {
   console.log(species);
 }
 
-console.log(species); // 1
+console.log(species); // `human`
 change();
-console.log(species); // 2
+console.log(species); // `human`
 ```
 
 <!-- Put your image below -->
-
+![](../img/answer1.jpeg)
 ![](./img/image-name.jpg)
 
 - Create the execution context diagram
@@ -35,8 +35,8 @@ function topLevelFn() {
   function nestedFn() {
     var anotherLocalVar = "Local to nestedFn's scope.";
 
-    console.log(localVar); // 1
-    console.log(topLevelVar); // 2
+    console.log(localVar); // `this is local to topLevelFn's scope`
+    console.log(topLevelVar); // `this is global scope`
   }
 
   nestedFn();
@@ -46,7 +46,7 @@ topLevelFn();
 ```
 
 <!-- Put your image below -->
-
+![](../img/answer2.jpeg)
 ![](./img/image-name.jpg)
 
 - Create the execution context diagram
@@ -64,20 +64,20 @@ function main() {
   function inner() {
     var four = 'Four';
 
-    console.log(one); // 1
-    console.log(two); // 2
-    console.log(three); // 3
+    console.log(one); // `One`
+    console.log(two); // `Two`
+    console.log(three); // `Three`
   }
-  console.log(four); // 4
+  console.log(four); // `Four`
   inner();
 }
 
 main();
-console.log(one, two, three, four); // 5
+console.log(one, two, three, four); // `One`, `Two`, undefined, undefined
 ```
 
 <!-- Put your image below -->
-
+![](../img/answer3.jpeg)
 ![](./img/image-name.jpg)
 
 - Create the execution context diagram
