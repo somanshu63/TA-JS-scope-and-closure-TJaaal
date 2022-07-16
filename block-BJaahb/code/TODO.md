@@ -12,6 +12,7 @@ function outer() {
 let getSum = outer();
 let num = getSum();
 ```
+![](../img/answer1.jpeg)
 
 2.
 
@@ -28,11 +29,13 @@ function getCounter() {
 
 let counter = getCounter();
 
-counter(); // output
-counter(); // output
-counter(); // output
-counter(); // output
+counter(); // 0
+counter(); // 1
+counter(); // 2
+counter(); // 3
 ```
+![](../img/answer2.jpeg)
+
 
 3. Create the execution context diagram
 
@@ -50,4 +53,7 @@ blue();
 tomato();
 
 // What will be the background color after the execution of last line
+tomato
 ```
+![](../img/answer3.jpeg)
+
