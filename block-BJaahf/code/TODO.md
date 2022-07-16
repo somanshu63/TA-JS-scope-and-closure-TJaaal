@@ -11,8 +11,8 @@
 
 ```js
 function loop(sv, tf, uf, performfunction) {
-  for(i = sv; i < tf; i += uf){
-    performfunction;
+  for(i = sv; tf(i); i = uf(i)){
+    performfunction(i);
   } 
 }
 
@@ -34,7 +34,7 @@ Here's how it works. The function has an "accumulator value" which starts as the
 ```js
 function reduce(array, callback, initialValue) {
   let av = initialValue;
-  for( i = 0; i < array.length; i++){
+  for(let i = 0; i < array.length; i++){
     av = callback(av,array[i]);
   }
   return av;
@@ -51,19 +51,13 @@ reduce(nums, add, 0); //-> 8
 3. Construct a function intersection that compares input arrays and returns a new array with elements found in all of the inputs.
 
 ```js
-function intersection(arrays) {
-  let listOfarray = [arrays]; 
-  let allNumbersArray = listOfarray[0].concat(listOfarray[1]).concat(listOfarray[2]);
-  let resultArr = [];
-  for (let i = 0; i < allNumbersArray.length; i++) {
-    if(listOfarray[0].includes(allNumbersArray[i]) 
-    && listOfarray[1].includes(allNumbersArray[i])
-    && listOfarray[2].includes(allNumbersArray[i])){
-      resultArr.push(allNumbersArray[i]);
-    }
+function intersection(...arrays) {
+  let first = arrays[0];
+  for(let i = 1; i < arrays.length; i++){
+    let second = arrays[i];
+    first = first.filter(elm => second.includes(elm));
   }
-  resultArr = [...new Set(resultArr)];
-  return resultArr;
+  return first;
 }
 
 // Test
@@ -79,11 +73,13 @@ console.log(
 4. Construct a function `union` that compares input arrays and returns a new array that contains all elements. If there are duplicate elements, only add it once to the new array. Preserve the order of the elements starting from the first element of the first input array.
 
 ```js
-function union(arrays) {
-  let listOfarray = [arrays]; 
-  let allNumbersArray = listOfarray[0].concat(listOfarray[1]).concat(listOfarray[2]);
-  allNumbersArray = [...new Set(allNumbersArray)];
-  return allNumbersArray;
+function union(...arrays) {
+  let first = arrays[0];
+  for(let i = 1; i < arrays.length; i++){
+    let second = arrays[i];
+    first = first.filter(elm => !second.includes(elm)).concat(second);
+  }
+  return first;
 }
 
 // Test
