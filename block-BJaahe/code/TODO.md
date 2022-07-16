@@ -14,9 +14,7 @@ function outer(str){
 ```js
 function delay(cb, waittime){
   function inner() {
-    setTimeout(
-
-    ,waittime);
+    setTimeout(cb,   waittime);
   }
   return inner;
 }
@@ -78,13 +76,12 @@ When `forEach` function is called it returns another function. When the returned
 function forEach(arr) {
   var index = 0;
   function inner() {
-    index += 1;
-    return arr[index];
+    return arr[index++];
   }
   return inner;
 }
 
-let next = [1, 2, 3, 4, 5];
+let next = forEach([1, 2, 3, 4, 5]);
 next(); // 1
 next(); // 2
 next(); // 3
@@ -173,10 +170,10 @@ The returned function accepts a string (children) and returns the children with 
 
 ```js
 function createTag(element) {
-  function inner(str) {
-    return document.createElement(`${element}`).innerText = `${str}`;
+  return function inner(str) {
+    let elm = document.createElement(element).innerText = str;
+    return elm;
   }
-  return inner;
 }
 
 let bold = createTag('b');
