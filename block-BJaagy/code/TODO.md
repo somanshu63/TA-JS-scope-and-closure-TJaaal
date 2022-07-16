@@ -6,7 +6,7 @@ function divide(n, cb){
 
 2. Create a function by you choice that returns a function reference.
 ```js
-function divide(n, cb){
+function divide(n){
   return cb;
 }
 ```
@@ -20,7 +20,11 @@ Have `map` return a new array filled with values that are the result of the 'cal
 ```js
 // Your code goes here
 function map(arr, cb){
-  return arr.map(cb);
+  let final = [];
+  for(let elm of arr){
+    final.push(cb(elm));
+  }
+  return final;
 }
 // Test Your Code
 function multiplyByTwo(n) {
@@ -36,7 +40,10 @@ multiplyByTwo(2); //-> 4
 ```js
 // Your code goes here
 function forEach(arr, cb){
-  return arr.forEach(cb);
+  let final = [];
+  for(let elm of arr){
+    cb(elm);
+  }
 }
 // Test Your Code
 let alphabet = '';
@@ -51,11 +58,13 @@ console.log(alphabet); //prints 'abcd'
 
 ```js
 function filter(arr, cb){
-  let newArr = [];
-  if(Boolean(arr.filter(cb)) == true){
-    newArr = arr.filter(cb);
+  let final = [];
+  for(let elm of arr){
+    if(cb(elm)){
+          final.push(elm);
+    }
   }
-  return newArr;
+  return final;
 }
 // Test Your Code
 
