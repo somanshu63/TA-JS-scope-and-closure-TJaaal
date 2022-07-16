@@ -10,8 +10,10 @@
 **You can use normal for loop for this function**
 
 ```js
-function loop() {
-  // Your code goes here
+function loop(sv, tf, uf, performfunction) {
+  for(i = sv; i < tf; i += uf){
+    performfunction;
+  } 
 }
 
 loop(
@@ -30,7 +32,13 @@ loop(
 Here's how it works. The function has an "accumulator value" which starts as the `initialValue` and accumulates the output of each loop. The array is iterated over, passing the accumulator and the next array element as arguments to the `callback`. The callback's return value becomes the new accumulator value. The next loop executes with this new accumulator value. In the example above, the accumulator begins at 0. `add(0,4)` is called. The accumulator's value is now 4. Then `add(4, 1)` to make it 5. Finally `add(5, 3)` brings it to 8, which is returned.
 
 ```js
-function reduce(array, callback, initialValue) {}
+function reduce(array, callback, initialValue) {
+  let av = initialValue;
+  for( i = 0; i < array.length; i++){
+    av = callback(av,array[i]);
+  }
+  return av;
+}
 
 // Test
 var nums = [4, 1, 3];
@@ -43,7 +51,20 @@ reduce(nums, add, 0); //-> 8
 3. Construct a function intersection that compares input arrays and returns a new array with elements found in all of the inputs.
 
 ```js
-function intersection(arrays) {}
+function intersection(arrays) {
+  let listOfarray = [arrays]; 
+  let allNumbersArray = listOfarray[0].concat(listOfarray[1]).concat(listOfarray[2]);
+  let resultArr = [];
+  for (let i = 0; i < allNumbersArray.length; i++) {
+    if(listOfarray[0].includes(allNumbersArray[i]) 
+    && listOfarray[1].includes(allNumbersArray[i])
+    && listOfarray[2].includes(allNumbersArray[i])){
+      resultArr.push(allNumbersArray[i]);
+    }
+  }
+  resultArr = [...new Set(resultArr)];
+  return resultArr;
+}
 
 // Test
 console.log(
@@ -58,7 +79,12 @@ console.log(
 4. Construct a function `union` that compares input arrays and returns a new array that contains all elements. If there are duplicate elements, only add it once to the new array. Preserve the order of the elements starting from the first element of the first input array.
 
 ```js
-function union(arrays) {}
+function union(arrays) {
+  let listOfarray = [arrays]; 
+  let allNumbersArray = listOfarray[0].concat(listOfarray[1]).concat(listOfarray[2]);
+  allNumbersArray = [...new Set(allNumbersArray)];
+  return allNumbersArray;
+}
 
 // Test
 console.log(
