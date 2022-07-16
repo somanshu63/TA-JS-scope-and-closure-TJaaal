@@ -6,7 +6,9 @@
 
 ```js
 function forEach(arr, cb) {
-  arr.reduce(cb);
+  arr.reduce((acc, cv, index, arr) => {
+    cb(cv, index, arr);
+  });
 }
 
 forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
@@ -22,7 +24,10 @@ forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
 
 ```js
 function map(arr, cb) {
-  return arr.reduce(cb);
+  return arr.reduce((acc, cv, index, arr) => {
+    acc.push(cb(cv, index, arr));
+    return acc;
+  }, []);
 }
 
 map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'AryaArya']
@@ -36,7 +41,12 @@ map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'Ary
 
 ```js
 function filter(arr, cb) {
-  return arr.reduce(cb);
+  return arr.reduce((acc, cv, index, arr) => {
+    if(cb(cv, index, arr)){
+      acc.push(cv);
+    }
+    return acc;
+  }, []);
 }
 filter(['Sam', 'Jon', 'Arya'], (name) =>
   name.startsWith('S')
