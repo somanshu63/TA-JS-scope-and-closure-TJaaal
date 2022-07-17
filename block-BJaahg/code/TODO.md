@@ -13,7 +13,7 @@ console.log(
   window.firstName,
   window.lastName,
   window.knownAs
-);
+);//'no one'
 ```
 
 2. Guess the output:
@@ -27,7 +27,7 @@ function fullName(a, b) {
   return a + b;
 }
 
-console.log(window.fullName(firstName, lastName));
+console.log(window.fullName(firstName, lastName));// 'AryaStark' 
 ```
 
 3. Make a Execution Context Diagram for the following JS and write the output.
@@ -95,7 +95,7 @@ function isAwesome() {
   }
   console.log(awesome);
 }
-isAwesome();
+isAwesome();// undefined
 ```
 
 9. What will be the output of the following
@@ -121,7 +121,7 @@ function isAwesome() {
   }
   console.log(awesome);
 }
-isAwesome();
+isAwesome();// undefined
 ```
 
 11. What will be the output of the following
@@ -135,7 +135,7 @@ function fullName(a, b) {
   return a + b;
 }
 const name = fullName(firstName, lastName);
-console.log(name);
+console.log(name);//'AryaStark'
 ```
 
 12. Guess the output of the code below with a reason.
@@ -146,7 +146,7 @@ function sayHello() {
 }
 sayHello();
 
-console.log(name);
+console.log(name);//'AryaStark'
 ```
 
 13. Guess the output of the code below with a reason.
@@ -155,7 +155,7 @@ console.log(name);
 if (true) {
   var name = 'Arya Stark';
 }
-console.log(name);
+console.log(name);//'AryaStark' because var is function scope
 ```
 
 14. Guess the output of the code below with a reason.
@@ -164,7 +164,7 @@ console.log(name);
 if (true) {
   let name = 'Arya Stark';
 }
-console.log(name);
+console.log(name);// name is not defined because let is block scope
 ```
 
 15. Guess the output of the code below with a reason.
@@ -173,7 +173,7 @@ console.log(name);
 for (var i = 0; i < 20; i++) {
   //
 }
-console.log(i);
+console.log(i);//20 because i is declared in var so it is global
 ```
 
 16. Guess the output of the code below with a reason.
@@ -182,7 +182,7 @@ console.log(i);
 for (let i = 0; i < 20; i++) {
   //
 }
-console.log(i);
+console.log(i);//i is not defined because it is declared with i
 ```
 
 17. Guess the output and the reason behind that.
@@ -194,7 +194,7 @@ function sample() {
   }
   console.log(username);
 }
-sample();
+sample();//'John Snow' because it is declared with var
 ```
 
 18. Guess the output and the reason behind that.
@@ -206,7 +206,7 @@ function sample() {
   }
   console.log(username);
 }
-sample();
+sample();// username is not defined because it is declared with let and that is block scope
 ```
 
 19. Guess the output and the reason behind that.
@@ -220,7 +220,8 @@ function sample() {
   }
   console.log(username, 'second');
 }
-sample();
+sample();//John Snow
+         //John Snow second this is because var is function scope so there value will depend upon the last declaration
 ```
 
 20. Guess the output and the reason behind that.
@@ -234,7 +235,8 @@ function sample() {
   }
   console.log(username, 'second');
 }
-sample();
+sample();//John Snow first
+        //Arya Stark second this is because let is block scope so there value will depend upon the scope declarations
 ```
 
 21. Guess the output and the reason behind that.
@@ -247,7 +249,9 @@ function sample(...args) {
   }
 }
 
-sample('First', 'Second', 'Third');
+sample('First', 'Second', 'Third');// Hello I am First
+                                   // Hello I am Second
+                                   // Hello I am Third because let keeps it simple and single in one go so it console each value with iteration
 ```
 
 22. Guess the output and the reason behind that.
@@ -260,7 +264,9 @@ function sample(...args) {
   }
 }
 
-sample('First', 'Second', 'Third');
+sample('First', 'Second', 'Third');// Hello I am First
+                                   // Hello I am Second
+                                   // Hello I am Third because const keeps it simple and single in one go so it console each value with iteration
 ```
 
 23. Guess the output and the reason behind that.
@@ -273,7 +279,7 @@ if (true) {
   console.log(username, 'First');
   let username = 'Hello World!';
   myFunc();
-}
+}//'Hello World Second' because before first console username is not declared while before second is
 ```
 
 24. Guess the output and the reason behind that.
@@ -289,7 +295,7 @@ function outer() {
   inner();
 }
 
-outer();
+outer();//I love this movie called MAD MAX: FURY ROAD
 ```
 
 25. Guess the output and the reason behind that.
@@ -306,7 +312,7 @@ function outer() {
   inner();
 }
 
-outer();
+outer();//I love this movie called BEFORE SUNRISE because it has movie present in memory of inner
 ```
 
 26. Guess the output and the reason behind that.
@@ -326,7 +332,8 @@ function outer() {
   }
   inner();
 }
-outer();
+outer();//I love this movie called GONE GIRL because it has movie present in memory of extraInner
+
 ```
 
 30. Using reduce find the final value when the initial value passed is `100`. You have to pass the output of one function into the input of next function in the array `allFunctions` starts with `addOne` ends with `half`.
@@ -353,6 +360,15 @@ let allFunctions = [
   multiplyThree,
   half,
 ];
-
+function reduce(array, initialValue) {
+  let av = initialValue;
+  let result;
+  for(let i = 0; i < array.length; i++){
+    av = array[i](av);
+  }
+  return av;
+}
+reduce((allFunctions, 100));
 // Answer is: 447
+
 ```
