@@ -108,7 +108,7 @@ function isAwesome() {
   }
   console.log(awesome);
 }
-isAwesome();
+isAwesome();//true
 ```
 
 10. What will be the output of the following
@@ -360,15 +360,8 @@ let allFunctions = [
   multiplyThree,
   half,
 ];
-function reduce(array, initialValue) {
-  let av = initialValue;
-  let result;
-  for(let i = 0; i < array.length; i++){
-    av = array[i](av);
-  }
-  return av;
-}
-reduce((allFunctions, 100));
+
+allFunctions.reduce((acc, cv) => cv(acc), 100);
 // Answer is: 447
 
 ```
