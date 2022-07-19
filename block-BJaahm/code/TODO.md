@@ -2,7 +2,6 @@
 
 ```js
 function intersection(...arrays) {
-      acc = arrays[0];
   return arrays.reduce((acc, cv, i) => {
     acc = acc.filter(elm => cv.includes(elm));
     return acc;
@@ -27,7 +26,7 @@ function union(...arrays) {
   return arrays.reduce((acc, cv =1, i) => {
     acc = acc.filter(elm => !cv.includes(elm)).concat(cv);
     return acc;
-  }, []);
+  });
 }
 
 // Test
