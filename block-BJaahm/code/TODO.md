@@ -2,8 +2,8 @@
 
 ```js
 function intersection(...arrays) {
+      acc = arrays[0];
   return arrays.reduce((acc, cv, i) => {
-    acc = arrays[0];
     acc = acc.filter(elm => cv.includes(elm));
     return acc;
   });
@@ -23,8 +23,8 @@ console.log(
 
 ```js
 function union(...arrays) {
+      acc = arrays[0];
   return arrays.reduce((acc, cv =1, i) => {
-    acc = arrays[0];
     acc = acc.filter(elm => !cv.includes(elm)).concat(cv);
     return acc;
   }, []);
